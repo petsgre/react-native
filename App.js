@@ -1,9 +1,9 @@
 import React from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, StyleSheet } from "react-native";
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 function List(data) {
-  return (<Text>{data.children || 'default'}</Text>)
+  return (<Text style={styles.bigBlue}>{data.children || 'default'}</Text>)
 }
 class HomeScreen extends React.Component {
   constructor() {
@@ -46,8 +46,8 @@ class HomeScreen extends React.Component {
     }
 
     return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Home Screen</Text>
+      <View>
+        <Text style={styles.red}>Home Screen</Text>
         <Text>{this.state.status}</Text>
         <Button
           title="Go to Details"
@@ -69,8 +69,10 @@ class HomeScreen extends React.Component {
 class DetailsScreen extends React.Component {
   render() {
     return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Details Screen</Text>
+      <View style={{flex: 1}}>
+        <View style={{flex: 1, backgroundColor: 'powderblue'}} />
+        <View style={{flex: 2, backgroundColor: 'skyblue'}} />
+        <View style={{flex: 3, backgroundColor: 'steelblue'}} />
       </View>
     );
   }
@@ -142,6 +144,18 @@ const TabNavigator = createBottomTabNavigator(
     },
   }
 );
+
+const styles = StyleSheet.create({
+  bigBlue: {
+    color: 'blue',
+    fontWeight: 'bold',
+    fontSize: 30,
+  },
+  red: {
+    color: 'red',
+  },
+});
+
 const AppContainer = createAppContainer(AppNavigator);
 
 // export default class App extends React.Component {
