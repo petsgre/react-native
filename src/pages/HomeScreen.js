@@ -1,14 +1,11 @@
 
 import React from "react";
-import { AppRegistry, View, Text, Button, StyleSheet, Image, ScrollView } from "react-native";
+import { View, Text, Button, StyleSheet, Image, ScrollView, TouchableOpacity } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Swiper from 'react-native-swiper'
 import sort from '../sort_url.js'
 
-console.log(sort);
-
 function List(data) {
-  console.log(data);
   const index = data.children
   return (
     <View style={data.style}>
@@ -60,7 +57,7 @@ class HomeScreen extends React.Component {
     }
     let list = []
     for (let index = 0; index < 20; index++) {
-      list.push(<View style={styles.list} key={index}
+      list.push(<TouchableOpacity style={styles.list} key={index}
         onPress={() => this.props.navigation.navigate('Test')}>
         <Image
           style={{ width: 50, height: 50 }}
@@ -74,7 +71,7 @@ class HomeScreen extends React.Component {
             <Text style={{ width: '50%', textAlign: 'right', fontSize: 12 }}>220m</Text>
           </View>
         </View>
-      </View>)
+      </TouchableOpacity>)
     }
     return (
       <View style={{ flex: 1 }}>
@@ -104,11 +101,6 @@ class HomeScreen extends React.Component {
           <View>
             <View style={{ color: 'red', flex: 1, flexDirection: 'row', justifyContent: 'center' }}>{Arr}</View>
           </View>
-          <Button
-          title="Go to Details"
-          onPress={() => this.props.navigation.navigate('Test')}
-        />
-
           {list}
         </ScrollView>
 
